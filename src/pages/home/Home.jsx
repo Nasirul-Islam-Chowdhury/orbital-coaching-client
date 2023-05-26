@@ -1,20 +1,15 @@
 import React from 'react';
-import Lottie from "lottie-react";
-import animation from '../../../teacher.json'
+import Banner from '../../components/banner/Banner';
+import HomeService from '../../components/homeService/HomeService';
+import handleTitle from '../../../useTitle';
+
 const Home = () => {
+    handleTitle("Home")
     return (
-      <div className='flex justify-between container'>
-        <div>
-<h1 className='text-4xl'>
-    Learn On your schedule
-</h1>
+        <div className='bg-banner'>
+            <Banner/>
+            <HomeService/>
         </div>
-        <div>
-        <div className='w-full h-1/2'>
-          <Lottie animationData={animation} loop={true} />
-        </div>
-        </div>
-      </div>
     );
 };
 
