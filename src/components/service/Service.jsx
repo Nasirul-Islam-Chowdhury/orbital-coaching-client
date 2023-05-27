@@ -7,13 +7,16 @@ const Service = ({service}) => {
   handleTitle("services")
     const {rating, name, subject,img,description,rate, _id} = service;
     return (
-      <div className="card w-96 bg-base-300  shadow-3xl">
-      <figure><img className='w-full h-60' src={img} alt="Shoes" /></figure>
-      <div className="card-body items-center text-center">
+      <div className=" w-96 bg-base-300 rounded-xl shadow-3xl">
+      <figure><img className='w-full h-72 rounded' src={img} alt="Shoes" /></figure>
+      <div className="items-center text-center p-5">
         <h2 className="card-title ">
           Subject: {subject}</h2>
           <p className='items-start text-start  '>{description.slice(0,120)}...</p>
-          <Rating rate={rate} ratings={rating}/><br />
+        <span className='flex gap-3'>
+        {rating} <Rating rate={rate} ratings={rating}/>
+        </span>
+          <br />
         <div className="card-actions justify-end">
           <button className="btn btn-primary">
             <Link to={`/serviceDetails/${_id}`}>

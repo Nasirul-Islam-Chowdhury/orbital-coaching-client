@@ -12,9 +12,9 @@ const Rating = ({ ratings, rate }) => {
       }
     </div>
   })
-  return <div className="flex justify-center gap-2 items-center">
+  return <div className="flex justify-start gap-2 items-center">
  <span className=" flex justify-center gap-2">{ratingStars}</span>
- <h1 className="text-sm"> ({rate})</h1>
+ <h1 className="text-sm"> ({rate} reviews)</h1>
 </div>
 };
 

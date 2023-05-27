@@ -4,6 +4,7 @@ import HomeService from '../../components/homeService/HomeService';
 import handleTitle from '../../../useTitle';
 
 const Home = () => {
+    
     handleTitle("Home")
     return (
         <div className='bg-banner'>
