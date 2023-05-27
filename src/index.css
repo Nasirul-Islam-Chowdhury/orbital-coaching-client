@@ -2,7 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-
+@media (max-width: 640px) {
+  .bg-sm-device {
+    background-image: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+  }
+}
 
 @layer components{
     .container{

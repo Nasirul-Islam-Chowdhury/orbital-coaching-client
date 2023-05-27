@@ -8,7 +8,7 @@ const Service = ({service}) => {
     const {rating, name, subject,img,description,rate, _id} = service;
     return (
       <div className=" w-96 bg-base-300 rounded-xl shadow-3xl">
-      <figure><img className='w-full h-72 rounded' src={img} alt="Shoes" /></figure>
+      <figure><img className='w-full h-60 rounded-xl' src={img} alt="Shoes" /></figure>
       <div className="items-center text-center p-5">
         <h2 className="card-title ">
           Subject: {subject}</h2>
@@ -17,10 +17,12 @@ const Service = ({service}) => {
         {rating} <Rating rate={rate} ratings={rating}/>
         </span>
           <br />
+    
         <div className="card-actions justify-end">
           <button className="btn btn-primary">
             <Link to={`/serviceDetails/${_id}`}>
-            see details</Link>
+            See Details
+            </Link>
           </button>
         </div>
       </div>

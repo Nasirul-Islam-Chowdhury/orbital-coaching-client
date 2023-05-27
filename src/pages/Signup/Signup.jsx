@@ -11,10 +11,12 @@ const Signup = () => {
         const name = form.name.value;
         const password = form.password.value;
         const email = form.email.value;
+        const photoURL = form.photoURL.value;
         const confirmPass = form.confirmPass.value;
-        const handleUpdateUserProfile = (name) => {
+        const handleUpdateUserProfile = (name, photoURL) => {
             const profile = {
               displayName: name,
+              photoURL: photoURL
             }
             updateUserProfile(profile)
             .then(()=>{})
@@ -30,7 +32,7 @@ const Signup = () => {
         createUser(email, password)
         .then(res => {
             console.log(res.user);
-            handleUpdateUserProfile(name);
+            handleUpdateUserProfile(name,photoURL);
             setError("User Created Successfully")})
         .catch(e => setError(e.message));
 
@@ -52,13 +54,23 @@ const Signup = () => {
 
                             </div>
                         </div>
-                        <p>Name</p>
                         <div className="flex flex-col items-start">
+                        <p>Name</p>
                             <input
                             required
                                 placeholder='enter your name'
                                 type="text"
                                 name="name"
+                                className="block w-full mt-1 p-2 border border-gray-600 rounded"
+                            />
+                        </div>
+                        <div className="flex flex-col items-start mt-4">
+                        <p>Photo URL</p>
+                            <input
+                            required
+                                placeholder='enter your photoURL'
+                                type="text"
+                                name="photoURL"
                                 className="block w-full mt-1 p-2 border border-gray-600 rounded"
                             />
                         </div>

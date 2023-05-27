@@ -25,7 +25,7 @@ const Banner = () => {
                 </div>
               
                 <div>
-                    <p className='mt-24 font-bold'>
+                    <p className='lg:mt-24 md:mt-20 mt-10 font-bold'>
                         Can’t handle tons of assignments?
                         
                     </p>
