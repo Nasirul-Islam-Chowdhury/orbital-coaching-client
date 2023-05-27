@@ -4,7 +4,6 @@ import { FaBars } from "react-icons/fa";
 import { HiOutlineX } from "react-icons/hi";
 const Header = () => {
     const [open, setOpen] = useState(false);
-console.log(import.meta.env.VITE_appId)
     return (
         <div className='bg-banner text-white'>
             <div className='lg:flex md:flex lg:justify-between  justify-center items-center container h-20'>

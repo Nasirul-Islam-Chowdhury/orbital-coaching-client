@@ -1,36 +1,74 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { context } from '../../components/AuthProvider/Authcontexts';
 
 const Signup = () => {
+    const [error, setError] = useState(" ");
+    const { createUser, googleSignin , updateUserProfile} = useContext(context);
+    const handleRegister = (e) => {
+        e.preventDefault()
+        const form = e.target;
+        const name = form.name.value;
+        const password = form.password.value;
+        const email = form.email.value;
+        const confirmPass = form.confirmPass.value;
+        const handleUpdateUserProfile = (name) => {
+            const profile = {
+              displayName: name,
+            }
+            updateUserProfile(profile)
+            .then(()=>{})
+            .catch(error=>console.log(error))
+          }
+        if (!/[*@!#%&()^~{}]+/.test(password)) {
+            return  setError("Please input atleast one special character");
+          };
+        if(password != confirmPass){
+            return setError("Password didn't match")
+        }
+        //  firebase register
+        createUser(email, password)
+        .then(res => {
+            console.log(res.user);
+            handleUpdateUserProfile(name);
+            setError("User Created Successfully")})
+        .catch(e => setError(e.message));
+
+    }
+    const handleGoogleSignin = () => {
+        googleSignin().then(res => console.log(res.user)).catch(e => setError(e.message))
+    }
     return (
         <div className='bg-banner'>
             <div className="flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0 container">
-               
+
                 <div className="w-full p-10 py-4 mt-6 overflow-hidden bg-white shadow-md sm:max-w-lg sm:rounded-lg">
-                    <form>
-                   
-                        <div className='my-4'>                
-                        <div >
-                           <h3 className="text-4xl text-center uppercase font-primary font-bold "> Orbital</h3>
-                            <p className='text-sm text-center font-semibold' >Academic care</p>
-                    
-                        </div>
-                </div>
-                            <p>Name</p>
-                            <div className="flex flex-col items-start">
-                                <input
-                                placeholder='enter your name'
-                                    type="text"
-                                    name="name"
-                                    className="block w-full mt-1 p-2 border border-gray-600 rounded"
-                                />
+                    <form onSubmit={handleRegister}>
+
+                        <div className='my-4'>
+                            <div >
+                                <h3 className="text-4xl text-center uppercase font-primary font-bold "> Orbital</h3>
+                                <p className='text-sm text-center font-semibold' >Academic care</p>
+
                             </div>
-                      
+                        </div>
+                        <p>Name</p>
+                        <div className="flex flex-col items-start">
+                            <input
+                            required
+                                placeholder='enter your name'
+                                type="text"
+                                name="name"
+                                className="block w-full mt-1 p-2 border border-gray-600 rounded"
+                            />
+                        </div>
+
                         <div className="mt-4">
                             <p>Email</p>
                             <div className="flex flex-col items-start">
                                 <input
-                                placeholder='enter your email'
+                                required
+                                    placeholder='enter your email'
                                     type="email"
                                     name="email"
                                     className="block w-full mt-1 p-2 border border-gray-600 rounded"
@@ -41,7 +79,8 @@ const Signup = () => {
                             <p>Password</p>
                             <div className="flex flex-col items-start">
                                 <input
-                                placeholder='enter password'
+                                required
+                                    placeholder='enter password'
                                     type="password"
                                     name="password"
                                     className="block w-full mt-1 p-2 border border-gray-600 rounded"
@@ -52,16 +91,17 @@ const Signup = () => {
                             <p>Confirm Password</p>
                             <div className="flex flex-col items-start">
                                 <input
-                                placeholder='enter confirm password'
+                                required
+                                    placeholder='enter confirm password'
                                     type="password"
-                                    name="password_confirmation"
+                                    name="confirmPass"
                                     className="block w-full mt-1 p-2 border border-gray-600 rounded"
                                 />
                             </div>
                         </div>
-                        
+                        <h1 className="py-2 text-sm font-semibold text-red-500">{error}</h1>
                         <div className="flex items-center mt-4">
-                            <button className="w-full px-4 py-2 tracking-wide text-white bg-banner">
+                            <button type='submit' className="w-full px-4 py-2 tracking-wide text-white bg-banner">
                                 Register
                             </button>
                         </div>
@@ -81,6 +121,7 @@ const Signup = () => {
                     </div>
                     <div className="my-6 space-y-2">
                         <button
+                            onClick={handleGoogleSignin}
                             aria-label="Login with Google"
                             type="button"
                             className="flex items-center justify-center w-full p-2 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400"
