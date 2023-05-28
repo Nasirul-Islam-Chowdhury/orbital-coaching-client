@@ -3,13 +3,21 @@ import Service from '../../components/service/Service';
 
 const Services = () => {
     const [services, setServices] = useState([])
+    const [loader, setLoader] = useState(true);
     useEffect(() => {
         fetch(`http://localhost:5000/services`)
             .then(res => res.json())
             .then(data => {
                 setServices(data);
+                setLoader(false)
             })
-    }, [])
+    }, [loader])
+    
+    if(loader){
+        return <div className='h-screen flex items-center justify-center'>
+            <progress className="progress w-56 "></progress>
+        </div>
+    }
     return (
         <div className='bg-banner p-5'>
 

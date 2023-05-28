@@ -18,14 +18,12 @@ export default {
         'banner': "linear-gradient(90deg, #4b6cb7 0%, #182848 100%);",
        },
       fontFamily: {
-        primary: ['Libre Baskerville', 'serif'],
-        secondary: ['Poppins', 'sans-serif'],
-        third: ['PT Sans', 'sans-serif']
+        primary: ['Poppins', 'sans-serif'],
       }
     },
 
   },
-  plugins: [require("daisyui")],
+  plugins: [require("daisyui")]
 };
 
 

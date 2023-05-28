@@ -2,17 +2,28 @@ import React from 'react';
 import Rating from '../Rating/Rating';
 import { Link } from 'react-router-dom';
 import handleTitle from '../../../useTitle';
+import { FaUser } from 'react-icons/fa';
 
 const Service = ({service}) => {
   handleTitle("services")
-    const {rating, name, subject,img,description,rate, _id} = service;
+    const {rating, subject,img,description,rate, _id} = service;
     return (
-      <div className=" w-96 bg-base-300 rounded-xl shadow-3xl">
-      <figure><img className='w-full h-60 rounded-xl' src={img} alt="Shoes" /></figure>
-      <div className="items-center text-center p-5">
+      <div className=" lg:w-96 w-full mx-auto bg-base-300 rounded-xl shadow-3xl">
+     {
+      img?
+      <figure><img className='w-full h-60 rounded-xl object-cover ' src={img} alt="teacher" /></figure>
+      :
+      <FaUser className='w-6 h-6 rounded-full' />
+     }
+      <div className="items-center text-center p-5 ">
         <h2 className="card-title ">
           Subject: {subject}</h2>
-          <p className='items-start text-start  '>{description.slice(0,120)}...</p>
+          <h1 className='text-start'>{
+            description.length > 100? 
+            <p>{description.slice(0,100)}...</p>
+            :
+            <p>{description}</p>
+          }</h1>
         <span className='flex gap-3'>
         {rating} <Rating rate={rate} ratings={rating}/>
         </span>

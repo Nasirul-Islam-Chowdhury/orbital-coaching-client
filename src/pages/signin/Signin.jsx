@@ -20,8 +20,8 @@ const Signin = () => {
     }
     const handleGoogleSignin = () => {
         googleSignin().
-            then(r => console.log(r.user)
-                .catch(e => {
+        then(r => console.log(r.user)
+        .catch(e => {
                     console.log(e);
                     setError(e.message)
                 }))
@@ -84,6 +84,7 @@ const Signin = () => {
                     </div>
                     <div className="my-6 space-y-2">
                         <button
+                        onClick={handleGoogleSignin}
                             aria-label="Login with Google"
                             type="button"
                             className="flex items-center justify-center w-full p-2 space-x-4 border rounded-md"
