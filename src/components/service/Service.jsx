@@ -1,17 +1,25 @@
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 import React from 'react';
 import Rating from '../Rating/Rating';
 import { Link } from 'react-router-dom';
-import handleTitle from '../../../useTitle';
 import { FaUser } from 'react-icons/fa';
 
 const Service = ({service}) => {
-  handleTitle("services")
+
     const {rating, subject,img,description,rate, _id} = service;
     return (
       <div className=" lg:w-96 w-full mx-auto bg-base-300 rounded-xl shadow-3xl">
      {
       img?
-      <figure><img className='w-full h-60 rounded-xl object-cover ' src={img} alt="teacher" /></figure>
+      <figure>
+        <PhotoProvider>
+      <PhotoView src={img}>
+      <img className='w-full h-60 rounded-xl object-cover ' src={img} alt="teacher" />
+      </PhotoView>
+    </PhotoProvider>
+      
+        </figure>
       :
       <FaUser className='w-6 h-6 rounded-full' />
      }
@@ -25,14 +33,14 @@ const Service = ({service}) => {
             <p>{description}</p>
           }</h1>
         <span className='flex gap-3'>
-        {rating} <Rating rate={rate} ratings={rating}/>
+       Rating : {rating} <Rating rate={rate} ratings={rating}/>
         </span>
           <br />
     
         <div className="card-actions justify-end">
           <button className="btn btn-primary">
             <Link to={`/serviceDetails/${_id}`}>
-            See Details
+            View Details
             </Link>
           </button>
         </div>

@@ -1,9 +1,13 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { context } from '../../components/AuthProvider/Authcontexts';
 
 const Signin = () => {
     const [error, setError] = useState(" ");
+
+    const location = useLocation()
+    const from = location.state?.from?.pathname || "/";
+    const navigate = useNavigate()
     const { emailSignin, googleSignin } = useContext(context);
     const handleSignin = (e) => {
         e.preventDefault()
@@ -11,7 +15,9 @@ const Signin = () => {
         const password = form.password.value;
         const email = form.email.value;
         emailSignin(email, password)
-            .then(res => console.log(res))
+            .then(res => {console.log(res)
+                navigate(from, {replace: true})
+            })
             .catch(e => {
                 console.log(e);
                 setError(e.message)
@@ -20,11 +26,14 @@ const Signin = () => {
     }
     const handleGoogleSignin = () => {
         googleSignin().
-        then(r => console.log(r.user)
+        then(r => {
+            console.log(r.user)
+            navigate(from, {replace: true})
+        })
         .catch(e => {
                     console.log(e);
                     setError(e.message)
-                }))
+                })
     }
     return (
         <div className='bg-banner'>
@@ -43,6 +52,7 @@ const Signin = () => {
                         <p>Email</p>
                         <div className="flex flex-col items-start">
                             <input
+                            required
                                 placeholder='enter your name'
                                 type="text"
                                 name="email"
@@ -55,6 +65,7 @@ const Signin = () => {
                             <p>Password</p>
                             <div className="flex flex-col items-start">
                                 <input
+                                required
                                     placeholder='enter password'
                                     type="password"
                                     name="password"

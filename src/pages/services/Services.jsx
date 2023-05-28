@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Service from '../../components/service/Service';
+import handleTitle from '../../../useTitle';
 
 const Services = () => {
+    handleTitle("Services")
     const [services, setServices] = useState([])
     const [loader, setLoader] = useState(true);
     useEffect(() => {

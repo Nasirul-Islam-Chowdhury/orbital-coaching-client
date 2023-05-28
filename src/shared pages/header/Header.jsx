@@ -27,39 +27,40 @@ const Header = () => {
                     </div>
                 </div>
                 <div>
-                    <ul className={`flex lg:flex-row md:flex-row  flex-col text-white  justify-center lg:gap-8 md:gap-6 gap-14 text-center w-full bg-sm-device   lg:text-xl text-2xl py-5 rounded-xl duration-1000 z-[999] font-primary md:static absolute ${open ? "top-20 left-0 bg-banner" : "top-[-1000px] left-0"} `}>
+                    <ul className={`flex lg:flex-row md:flex-row  flex-col text-white  justify-center lg:gap-8 md:gap-6 gap-14 text-center w-full bg-sm-device   lg:text-xl text-2xl py-5 rounded-b-xl duration-1000 z-[999] font-primary md:static absolute ${open ? "top-20 left-0 bg-banner" : "top-[-1000px] left-0"} `}>
                         <li>
                             <Link to="/">Home</Link>
                         </li>
                         <li>
                             <Link to="/services">Services</Link>
                         </li>
-                        <>
-                            {
-                                user && <li>
-                                    <Link to="/addService">Add Service</Link>
+                        <li>
+                            <Link to="/myReviews">My Reviews</Link>
+                        </li>
+
+                        <li>
+                            <Link to="/addService">Add Service</Link>
+                        </li>
+
+
+                        {
+                            !user &&
+                            <>
+                                <li>
+                                    <Link to="/signup">Signup</Link>
                                 </li>
-                            }
-                        </>
-                       
-                            {
-                                !user &&
-                                <>
-                                    <li>
-                                        <Link to="/signup">Signup</Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/signin">Signin</Link>
-                                    </li></>
-                            }
-                     
+                                <li>
+                                    <Link to="/signin">Signin</Link>
+                                </li></>
+                        }
+
 
                         {
                             user && <>
                                 <li onClick={handleLogout} className='cursor-pointer'>
                                     Logout
                                 </li>
-                                <li className='cursor-pointer w-8 h-8 flex justify-center'>
+                                <li className='cursor-pointer w-8 h-8 mx-auto'>
                                     <img className='rounded-full' src={user.photoURL} alt="" />
                                 </li>
                             </>

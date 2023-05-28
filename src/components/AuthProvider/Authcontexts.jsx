@@ -15,12 +15,22 @@ const Authcontexts = ({ children }) => {
         })
         return ()=> unsubscribe();
     },[])
-    const createUser = (email, password) =>  createUserWithEmailAndPassword(auth,email, password);
-    const googleSignin = ()=> signInWithPopup(auth, googleProvider);
-    const updateUserProfile = (profile) => updateProfile(auth.currentUser, profile);
-    const emailSignin = (email, password)=> signInWithEmailAndPassword(auth, email, password);
+    const createUser = (email, password) =>  {
+        setLoading(true)
+        return createUserWithEmailAndPassword(auth,email, password);
+    }
+    const googleSignin = ()=> {
+        setLoading(true)
+       return signInWithPopup(auth, googleProvider);
+    }
+    const updateUserProfile = (profile) => {
+        setLoading(true)
+        return updateProfile(auth.currentUser, profile);}
+    const emailSignin = (email, password)=> {
+        setLoading(true)
+        return signInWithEmailAndPassword(auth, email, password)};
     const logOut = () => signOut(auth);
-    const auhtInfo = { createUser,emailSignin, googleSignin, updateUserProfile,user,logOut,loading,setLoading};
+    const auhtInfo = { createUser,emailSignin, googleSignin, updateUserProfile,user,logOut,loading};
 
     return (
         <div>

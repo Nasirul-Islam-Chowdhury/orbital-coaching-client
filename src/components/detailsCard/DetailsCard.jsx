@@ -9,6 +9,7 @@ import { FiArrowRight } from "react-icons/fi";
 const DetailsCard = ({ d }) => {
     const { setLoading } = useContext(context)
     const [refresh, setRefresh] = useState(false)
+    const [msg, setmsg] = useState(" ")
     const [review, setReview] = useState([]);
     useEffect(() => {
         fetch(`http://localhost:5000/reviews/${d.name}`)
@@ -28,6 +29,10 @@ const DetailsCard = ({ d }) => {
         const field = e.target;
         const reviewText = field.review.value;
         const review = { reviewText, userName, subject, photo, teacherName }
+        if(!user){
+            return setmsg("Please Sign in first to write reviews")
+        }
+        setmsg(" ")
         fetch(`http://localhost:5000/reviews`, {
             method: "POST",
             headers: {
@@ -80,7 +85,11 @@ const DetailsCard = ({ d }) => {
                         <input required className='w-full border text-black border-black p-2 rounded-md mt-2' name="review" placeholder='write review' type="text" />
                         <button type="submit" className='btn btn-primary'>Submit Review</button>
                     </form>
+                   
                 </div>
+                <div>
+                        <h1 className='text-xl font-bold text-red-500'>{msg}</h1>
+                    </div>
                 <div className='flex justify-start gap-2 items-center mt-10'>
                     <h1 className='text-2xl font-bold '>Reviews</h1>
                      <FiArrowRight className='w-6 h-6 '/> </div>

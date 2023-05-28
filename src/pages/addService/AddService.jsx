@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { json } from 'react-router-dom';
+import handleTitle from '../../../useTitle';
 
 const AddService = () => {
+    handleTitle("Add Service")
     const [error, setError] = useState("")
     const handleSubmit = (e) => {
         e.preventDefault()
         const form = e.target;
         const name = form.name.value
+        const price = form.price.value
         const img = form.photourl.value
         const email = form.email.value
         const subject = form.subject.value
@@ -21,7 +23,7 @@ const AddService = () => {
         if (rating > 5) {
             return setError("Rate out of 5")
         }
-        const data = { name, location, experience, img, email, qualification, description, rating, subject };
+        const data = { name, location, experience, img, email, qualification, description, rating, subject,price };
         fetch('http://localhost:5000/addService', {
             method: "POST",
             headers: {
@@ -128,6 +130,16 @@ const AddService = () => {
                                 placeholder='rating'
                                 type="number"
                                 name="rating"
+                                className="block outline-0 w-full mt-1 p-2 border border-gray-600 rounded"
+                            />
+                        </div>
+                        <div className="flex flex-col items-start mt-4">
+                            <p>Price</p>
+                            <input
+                                required
+                                placeholder='price'
+                                type="number"
+                                name="price"
                                 className="block outline-0 w-full mt-1 p-2 border border-gray-600 rounded"
                             />
                         </div>
