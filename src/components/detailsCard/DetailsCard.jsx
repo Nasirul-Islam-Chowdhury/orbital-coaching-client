@@ -4,10 +4,11 @@ import { FaUserGraduate, FaUser, FaChevronRight } from 'react-icons/fa';
 import Rating from '../../components/Rating/Rating';
 import { context } from '../../components/AuthProvider/Authcontexts';
 import { FiArrowRight } from "react-icons/fi";
+import { Link, Navigate } from 'react-router-dom';
 
 
 const DetailsCard = ({ d }) => {
-    const { setLoading } = useContext(context)
+
     const [refresh, setRefresh] = useState(false)
     const [msg, setmsg] = useState(" ")
     const [review, setReview] = useState([]);
@@ -15,7 +16,7 @@ const DetailsCard = ({ d }) => {
         fetch(`http://localhost:5000/reviews/${d.name}`)
             .then(res => res.json())
             .then(data => {
-                setLoading(false)
+
                 setReview(data)
             })
     }, [refresh])
@@ -29,8 +30,11 @@ const DetailsCard = ({ d }) => {
         const field = e.target;
         const reviewText = field.review.value;
         const review = { reviewText, userName, subject, photo, teacherName }
-        if(!user){
-            return setmsg("Please Sign in first to write reviews")
+        const preMsg = <div>
+            <span>Please Sign in first to write reviews <span><Link className='underline' to="/signin">(go to signin page)</Link></span></span>
+        </div>
+        if (!user) {
+            return setmsg(preMsg)
         }
         setmsg(" ")
         fetch(`http://localhost:5000/reviews`, {
@@ -72,43 +76,43 @@ const DetailsCard = ({ d }) => {
                     <Rating review={review} ratings={d.rating} />
                 </div>
 
-              <div className='flex justify-between'>
-              <h2 className=" text-2xl font-bold font-primary mt-4">
-                    Subject : {d.subject}</h2>
-                <h2 className=" text-2xl font-bold font-primary mt-4">
-                    Price : ${d.price} <span className='text-sm'>(monthly)</span></h2>
-                
-              </div>
+                <div className='flex justify-between'>
+                    <h2 className=" text-2xl font-bold font-primary mt-4">
+                        Subject : {d.subject}</h2>
+                    <h2 className=" text-2xl font-bold font-primary mt-4">
+                        Price : ${d.price} <span className='text-sm'>(monthly)</span></h2>
+
+                </div>
                 <p className='text-white text-xl font-bold mt-8'>Please add a review</p>
                 <div className='flex gap-2 items-center'>
                     <form className='flex justify-start  gap-2 items-center w-full' onSubmit={handleReview}>
                         <input required className='w-full border text-black border-black p-2 rounded-md mt-2' name="review" placeholder='write review' type="text" />
                         <button type="submit" className='btn btn-primary'>Submit Review</button>
                     </form>
-                   
+
                 </div>
                 <div>
-                        <h1 className='text-xl font-bold text-red-500'>{msg}</h1>
-                    </div>
+                    <h1 className='text-xl font-bold text-green-500 mt-4'>{msg}</h1>
+                </div>
                 <div className='flex justify-start gap-2 items-center mt-10'>
                     <h1 className='text-2xl font-bold '>Reviews</h1>
-                     <FiArrowRight className='w-6 h-6 '/> </div>
+                    <FiArrowRight className='w-6 h-6 ' /> </div>
                 <div className='flex flex-col gap-3 my-5'>
                     {
-                       review.length> 0 ?
-                       review.map(review => <div className='my-2' key={review._id}>
-                       <div className='flex justify-start items-center gap-4'>
-                           {
-                               review.photo ? <img className='w-7 h-7 rounded-full' src={review.photo} alt="" /> : <FaUser className='w-6 h-6 rounded-full' />
-                           }
-                               <h1 className='font-semibold text-lg'>{review?.userName}</h1>
-                               <p className='text-sm'>{review.date}</p>                  
-                       </div>
+                        review.length > 0 ?
+                            review.map(review => <div className='my-2' key={review._id}>
+                                <div className='flex justify-start items-center gap-4'>
+                                    {
+                                        review.photo ? <img className='w-7 h-7 rounded-full' src={review.photo} alt="" /> : <FaUser className='w-6 h-6 rounded-full' />
+                                    }
+                                    <h1 className='font-semibold text-lg'>{review?.userName}</h1>
+                                    <p className='text-sm'>{review.date}</p>
+                                </div>
 
-                       <h1 className='my-2'>{review?.reviewText}</h1>
-                   </div>)
-                   :
-                   <h1>No Reviews</h1>
+                                <h1 className='my-2'>{review?.reviewText}</h1>
+                            </div>)
+                            :
+                            <h1>No Reviews</h1>
                     }
                 </div>
             </div>
