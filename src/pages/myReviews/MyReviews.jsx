@@ -5,7 +5,7 @@ import ReviewRow from '../../components/reviewRow/ReviewRow';
 
 const MyReviews = () => {
     const { user } = useContext(context)
-
+    const [refresh, setRefresh] = useState(true)
     const [loader, setLoader] = useState(true)
     const [review, setReview] = useState([]);
     handleTitle("My Reviews");
@@ -16,7 +16,7 @@ const MyReviews = () => {
                 setLoader(false)
                 setReview(data)
             })
-    }, [loader])
+    }, [loader,refresh])
     if (loader) {
         return <div className='h-screen flex items-center justify-center'>
             <progress className="progress w-56 "></progress>
@@ -24,9 +24,6 @@ const MyReviews = () => {
     }
     return (
         <div className="overflow-x-scroll  ">
-            
-
-
             {
                 review.length > 0 ?
                     <table className=" container table-zebra table  w-full  my-4">
@@ -43,12 +40,8 @@ const MyReviews = () => {
                         </thead>
                         <tbody>
                             {
-
-                                review.map(r =>
-                                <ReviewRow setReview={setReview} key={r._id} review={review} setLoader={setLoader}   r={r} loader={loader} />)
-
+                                review.map(r =><ReviewRow review={review} setReview={setReview} key={r._id}  setLoader={setLoader} r={r} setRefresh={setRefresh}/>)
                             }
-
                         </tbody>
                     </table>
                     :

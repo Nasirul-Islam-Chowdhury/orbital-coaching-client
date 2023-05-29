@@ -46,7 +46,7 @@ const DetailsCard = ({ d }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+              
                 if (data.acknowledged === true) {
                     field.reset()
                     window.alert("success")
