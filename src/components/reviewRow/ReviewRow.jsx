@@ -20,15 +20,7 @@ const ReviewRow = ({ r, review,setReview,setRefresh}) => {
             <td>{r.subject}</td>
             <td>{r.teacherName}</td>
             <td>{r.reviewText}</td>
-            <td>
-                <label htmlFor="my-modal-3" className="btn">
-                    Update Review
-                    </label>
 
-            </td>
-            <td>
-            <h1>{r._id}</h1>
-            </td>
             <td onClick={() => handleReviewDelete(r._id)} className=' text-red-600 cursor-pointer'>Delete Review</td>
             <td>
                     {/* modal body start */}

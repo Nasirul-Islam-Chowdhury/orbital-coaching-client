@@ -35,7 +35,6 @@ const MyReviews = () => {
                                 <th>Teacher Name</th>
                                 <th>Review</th>
                                 <th>Action</th>
-                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
