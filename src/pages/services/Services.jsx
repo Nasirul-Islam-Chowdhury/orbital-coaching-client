@@ -37,10 +37,10 @@ const Services = () => {
         <div className="flex justify-center gap-4 my-10">
           {[...Array(pages).keys()].map((p) => (
             <div  onClick={() => setPage(p)} key={p}>
-              <button className={` btn ${p === page && ' btn bg-white text-black'}`}>{p+1}</button>
+              <button className={` btn ${p === page && ' btn bg-white text-black '}`}>{p+1}</button>
             </div>
           ))}
-          <select onClick={()=>setPage(0)} onChange={(e)=>setSize(e.target.value)} className="">
+          <select onClick={()=>setPage(0)} onChange={(e)=>setSize(e.target.value)} className="select select-info">
             <option  value="6">6</option>
             <option value="12"> 12</option>
             <option value="15">15</option>

@@ -4,8 +4,9 @@ import { FaUserGraduate, FaUser, FaChevronRight } from 'react-icons/fa';
 import Rating from '../../components/Rating/Rating';
 import { context } from '../../components/AuthProvider/Authcontexts';
 import { FiArrowRight } from "react-icons/fi";
-import { Link, Navigate } from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 
 const DetailsCard = ({ d }) => {
 
@@ -57,8 +58,15 @@ const DetailsCard = ({ d }) => {
     }
     return (
         <div className="container lg:px-40 md:px-20 rounded-none px-10 py-4">
-            <div className=''>
-                <figure><img className='h-80 object-center lg:w-1/3 w-full rounded-xl mx-auto' src={d.img} alt="Shoes" /></figure>
+            <div>
+                <figure>
+                <PhotoProvider>
+      <PhotoView src={d.img}>
+      <img className='h-80 object-center lg:w-1/3 w-full rounded-xl mx-auto cursor-pointer' src={d.img} alt="teacher" />
+      </PhotoView>
+    </PhotoProvider>
+                 
+                    </figure>
             </div>
             <div className=" text-white lg:w-4/6 w-full mx-auto mt-4">
 
@@ -87,7 +95,7 @@ const DetailsCard = ({ d }) => {
                 <div className='flex gap-2 items-center'>
                     <form className='flex justify-start  gap-2 items-center w-full' onSubmit={handleReview}>
                         <input required className='w-full border text-black border-black p-2 rounded-md mt-2' name="review" placeholder='write review' type="text" />
-                        <button type="submit" className='btn btn-primary'>Submit Review</button>
+                        <button type="submit" className='btn btn-primary bg-btn'>Submit Review</button>
                     </form>
 
                 </div>

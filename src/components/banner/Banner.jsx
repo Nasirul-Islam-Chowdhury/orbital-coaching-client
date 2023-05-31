@@ -1,6 +1,7 @@
 import React from 'react';
 import Lottie from "lottie-react";
 import animation from '../../../teacher.json'
+import { Link } from 'react-router-dom';
 
 const Banner = () => {
     return (
@@ -32,13 +33,17 @@ const Banner = () => {
                         </p>
                     </div>
                     <div className='mt-6 flex justify-start gap-3'>
-                        <button className='btn '>Explore Services</button>
+                        <button className='btn '>
+                            <Link to="/services">
+                            Explore Services
+                            </Link>
+                        </button>
                         <button className='btn  btn-outline   text-white'>Learn More</button>
                     </div>
                 </div>
 
                 <div className='lg:w-3/6'>
-                    <div className=' w-full h-full'>
+                    <div className=' lg:w-full w-2/3 lg:h-full h-1/2'>
                         <Lottie animationData={animation} loop={true} />
                     </div>
                 </div>

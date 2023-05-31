@@ -41,7 +41,7 @@ const AddService = () => {
             })
     }
     return (
-        <div className='bg-banner'>
+        <div className='bg-banner pb-10'>
             <div className="flex flex-col lg:w-2/4 w-full items-center min-h-screen  pt-6 sm:justify-center sm:pt-0 container">
 
                 <div className=" min-w-full p-10 py-10 mt-6 overflow-hidden bg-white shadow-md sm:max-w-lg sm:rounded-lg">

@@ -15,7 +15,7 @@ const Service = ({service}) => {
       <figure>
         <PhotoProvider>
       <PhotoView src={img}>
-      <img className='w-full h-60 rounded-xl object-cover ' src={img} alt="teacher" />
+      <img className='w-full h-60 rounded-xl object-cover cursor-pointer' src={img} alt="teacher" />
       </PhotoView>
     </PhotoProvider>
       
@@ -38,7 +38,7 @@ const Service = ({service}) => {
           <br />
     
         <div className="card-actions justify-end">
-          <button className="btn btn-primary">
+          <button className="btn btn-primary bg-btn">
             <Link to={`/serviceDetails/${_id}`}>
             View Details
             </Link>

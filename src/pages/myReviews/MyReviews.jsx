@@ -23,7 +23,7 @@ const MyReviews = () => {
         </div>
     }
     return (
-        <div className="overflow-x-scroll  ">
+        <div className="overflow-x-scroll  min-h-screen">
             {
                 review.length > 0 ?
                     <table className=" container table-zebra table  w-full  my-4">
