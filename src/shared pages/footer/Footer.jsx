@@ -6,28 +6,37 @@ const Footer = () => {
         <div className=' bg-footer'>
             <div className='container'>
 <div >
-<footer className="footer p-10    text-white">
-  <div>
-    <span className="footer-title">Services</span> 
-    <Link to="/services" className="link link-hover">Hire Teacher</Link> 
-    <Link to="/addService" className="link link-hover">Add Service</Link> 
-    <a className="link link-hover">Marketing</a> 
-    <a className="link link-hover">Advertisement</a>
+<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center gap-4 p-10 lg:text-start text-center text-white">
+  <div className='flex flex-col gap-4'>
+   <h1> <span className="footer-title">Services</span> </h1>
+    <p><Link to="/services" className="link link-hover">Hire Teacher</Link> </p>
+    <p><Link to="/addService" className="link link-hover">Add Service</Link> </p>
+  <p>  <a className="link link-hover">Marketing</a> </p>
+   <p> <a className="link link-hover">Advertisement</a></p>
   </div> 
-  <div>
-    <span className="footer-title">Company</span> 
-    <Link to="/" className="link link-hover">Home</Link> 
-    <Link to="/services" className="link link-hover">Services</Link> 
-    <a className="link link-hover">About us</a> 
-    <a className="link link-hover">Press kit</a>
+  <div className='flex flex-col gap-4'>
+   <h1> <span className="footer-title">Company</span> </h1>
+    <p><Link to="/" className="link link-hover">Home</Link> </p>
+    <p><Link to="/services" className="link link-hover">Services</Link> </p>
+  <p>  <a className="link link-hover">About</a> </p>
+   <p> <a className="link link-hover">Press kit</a></p>
   </div> 
-  <div>
-    <span className="footer-title">Legal</span> 
-    <a className="link link-hover">Terms of use</a> 
-    <a className="link link-hover">Privacy policy</a> 
-    <a className="link link-hover">Cookie policy</a>
-  </div>
-</footer> 
+  <div className='flex flex-col gap-4'>
+   <h1> <span className="footer-title">Legal</span> </h1>
+    <p><Link to="/services" className="link link-hover">Terms of use</Link> </p>
+    <p><Link to="/addService" className="link link-hover">Privacy policy</Link> </p>
+  <p>  <a className="link link-hover">About</a> </p>
+   <p> <a className="link link-hover">Cookie policy</a></p>
+  </div> 
+  <div className='flex flex-col gap-4'>
+   <h1> <span className="footer-title">Company</span> </h1>
+    <p><Link to="/" className="link link-hover">Home</Link> </p>
+    <p><Link to="" className="link link-hover">About</Link> </p>
+  <p>  <a className="link link-hover">Services</a> </p>
+   <p> <a className="link link-hover">More</a></p>
+  </div> 
+
+</div> 
 </div>
 <footer className="footer px-10 py-4 border-t text-white  border-base-300">
   <div className="items-center grid-flow-col">
