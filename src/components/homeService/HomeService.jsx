@@ -20,9 +20,11 @@ const HomeService = () => {
         );
       }
     return (
-        <div className='bg-white text-black py-32'>
+        <div className='bg-white text-black lg:py-32 md:py-20 py-10'>
          <div className="container">
-         <h1 className='text-center text-5xl font-primary pb-20'>Our Popular Services</h1>
+         <h1 className='text-center lg:text-5xl text-3xl  font-primary lg:pb-20 md:pb-16 pb-4'>
+          Our Popular
+           Services</h1>
             <div>
             <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
           {services.map((service) => (
