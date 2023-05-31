@@ -14,7 +14,7 @@ const DetailsCard = ({ d }) => {
     const [msg, setmsg] = useState(" ")
     const [review, setReview] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews/${d.name}`)
+        fetch(`https://orbital-coaching-server-production.up.railway.app/reviews/${d.name}`)
             .then(res => res.json())
             .then(data => {
 
@@ -38,7 +38,7 @@ const DetailsCard = ({ d }) => {
             return setmsg(preMsg)
         }
         setmsg(" ")
-        fetch(`http://localhost:5000/reviews`, {
+        fetch(`https://orbital-coaching-server-production.up.railway.app/reviews`, {
             method: "POST",
             headers: {
                 "content-type": "application/json"

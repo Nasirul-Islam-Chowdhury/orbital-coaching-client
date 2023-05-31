@@ -41,7 +41,7 @@ export const router = createBrowserRouter([
             {
                 path: '/serviceDetails/:id',
                 element: <ServiceDetails/>,
-                loader: ({params})=> fetch(`http://localhost:5000/serviceDetails/${params.id}`)
+                loader: ({params})=> fetch(`https://orbital-coaching-server-production.up.railway.app/serviceDetails/${params.id}`)
             }
         ]
 

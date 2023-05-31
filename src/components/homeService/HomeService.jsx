@@ -5,7 +5,7 @@ const HomeService = () => {
     const [loader, setLoader] = useState(true);
     const [services, setServices] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/homeServices`)
+        fetch(`https://orbital-coaching-server-production.up.railway.app/homeServices`)
           .then((res) => res.json())
           .then((data) => {
             setLoader(false);

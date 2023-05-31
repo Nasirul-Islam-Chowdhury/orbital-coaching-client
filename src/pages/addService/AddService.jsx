@@ -24,7 +24,7 @@ const AddService = () => {
             return setError("Rate out of 5")
         }
         const data = { name, location, experience, img, email, qualification, description, rating, subject,price };
-        fetch('http://localhost:5000/addService', {
+        fetch('https://orbital-coaching-server-production.up.railway.app/addService', {
             method: "POST",
             headers: {
                 "content-type": "application/json"

@@ -11,7 +11,7 @@ const Services = () => {
   const [services, setServices] = useState([]);
   const [loader, setLoader] = useState(true);
   useEffect(() => {
-    fetch(`http://localhost:5000/services?page=${page}&size=${size}`)
+    fetch(`https://orbital-coaching-server-production.up.railway.app/services?page=${page}&size=${size}`)
       .then((res) => res.json())
       .then((data) => {
         setLoader(false);

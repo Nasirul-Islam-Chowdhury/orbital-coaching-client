@@ -10,7 +10,7 @@ const MyReviews = () => {
     const [review, setReview] = useState([]);
     handleTitle("My Reviews");
     useEffect(() => {
-        fetch(`http://localhost:5000/myreviews?name=${user.displayName}`)
+        fetch(`https://orbital-coaching-server-production.up.railway.app/myreviews?name=${user.displayName}`)
             .then(res => res.json())
             .then(data => {
                 setLoader(false)
