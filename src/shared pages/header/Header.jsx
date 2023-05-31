@@ -27,19 +27,19 @@ const Header = () => {
                     </div>
                 </div>
                 <div>
-                    <ul className={`flex lg:flex-row md:flex-row  flex-col text-white  justify-center lg:gap-8 md:gap-6 gap-14 text-center w-full bg-sm-device   lg:text-xl text-2xl py-5 rounded-b-xl duration-1000 z-[999] font-primary md:static absolute ${open ? "top-20 left-0 bg-banner" : "top-[-1000px] left-0"} `}>
+                    <ul className={`flex lg:flex-row md:flex-row  flex-col text-white  justify-center lg:gap-8 md:gap-6 gap-8 text-center w-full bg-sm-device   lg:text-xl text-2xl py-5 rounded-b-xl duration-500 z-[999] font-primary md:static absolute ${open ? "top-20 left-0 bg-banner" : "top-[-1000px] left-0"} `}>
                         <li>
-                            <Link to="/">Home</Link>
+                            <Link onClick={()=>setOpen(!open)} to="/">Home</Link>
                         </li>
                         <li>
-                            <Link to="/services">Services</Link>
+                            <Link onClick={()=>setOpen(!open)} to="/services">Services</Link>
                         </li>
                         <li>
-                            <Link to="/myReviews">My Reviews</Link>
+                            <Link onClick={()=>setOpen(!open)} to="/myReviews">My Reviews</Link>
                         </li>
 
                         <li>
-                            <Link to="/addService">Add Service</Link>
+                            <Link onClick={()=>setOpen(!open)} to="/addService">Add Service</Link>
                         </li>
 
 
@@ -47,10 +47,10 @@ const Header = () => {
                             !user &&
                             <>
                                 <li>
-                                    <Link to="/signup">Signup</Link>
+                                    <Link onClick={()=>setOpen(!open)} to="/signup">Signup</Link>
                                 </li>
                                 <li>
-                                    <Link to="/signin">Signin</Link>
+                                    <Link onClick={()=>setOpen(!open)} to="/signin">Signin</Link>
                                 </li></>
                         }
 
