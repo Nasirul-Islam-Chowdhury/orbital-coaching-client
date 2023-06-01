@@ -1,17 +1,28 @@
-import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { context } from '../../components/AuthProvider/Authcontexts';
+import toast from 'react-hot-toast';
+import { useContext, useState } from 'react';
+
 
 const Signup = () => {
-    const [error, setError] = useState(" ");
+    const location = useLocation();
+    const from = location.state?.from.pathname || '/'
+    const navigate = useNavigate()
+    const userSuccess = ()=>{
+        toast.success("You are successfully registered to orbital academic care")
+    }
+    const [error, setError] = useState("");
     const { createUser, googleSignin , updateUserProfile} = useContext(context);
+    const errorToast = ()=>{
+        toast.error(error)
+    }
     const handleRegister = (e) => {
         e.preventDefault()
         const form = e.target;
         const name = form.name.value;
         const password = form.password.value;
         const email = form.email.value;
-        const photoURL = form.photoURL.value;
+        const photoURL = form.photoURL?.value;
         const confirmPass = form.confirmPass.value;
         const handleUpdateUserProfile = (name, photoURL) => {
             const profile = {
@@ -24,7 +35,7 @@ const Signup = () => {
           }
         if (!/[*@!#%&()^~{}]+/.test(password)) {
             return  setError("Please input atleast one special character");
-          };
+          }
         if(password != confirmPass){
             return setError("Password didn't match")
         }
@@ -33,17 +44,23 @@ const Signup = () => {
         .then(res => {
             console.log(res.user);
             handleUpdateUserProfile(name,photoURL);
-            setError("User Created Successfully")})
-        .catch(e => setError(e.message));
+            navigate(from, {replace: true})
+            userSuccess();
+        })
+
+        .catch(e => {
+            setError(e.message)
+            errorToast()
+        });
 
     }
+   
     const handleGoogleSignin = () => {
         googleSignin().then(res => console.log(res.user)).catch(e => setError(e.message))
     }
     return (
         <div className='bg-banner'>
             <div className="flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0 container">
-
                 <div className="w-full p-10 py-4 mt-6 overflow-hidden bg-white shadow-md sm:max-w-lg sm:rounded-lg">
                     <form onSubmit={handleRegister}>
 

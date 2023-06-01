@@ -15,7 +15,7 @@ const Service = ({service}) => {
       <figure>
         <PhotoProvider>
       <PhotoView src={img}>
-      <img className='w-full h-60 rounded-xl object-cover cursor-pointer' src={img} alt="teacher" />
+      <img className='w-full h-60 rounded-md object-cover cursor-pointer' src={img} alt="teacher" />
       </PhotoView>
     </PhotoProvider>
       

@@ -7,6 +7,7 @@ import { FiArrowRight } from "react-icons/fi";
 import { Link } from 'react-router-dom';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
+import { toast } from 'react-hot-toast';
 
 const DetailsCard = ({ d }) => {
 
@@ -21,6 +22,9 @@ const DetailsCard = ({ d }) => {
                 setReview(data)
             })
     }, [refresh])
+    const reviewSuccess = ()=>{
+        toast.success("Your review added successfully")
+    }
     const { user } = useContext(context);
     const teacherName = d.name;
     const userName = user?.displayName;
@@ -50,7 +54,7 @@ const DetailsCard = ({ d }) => {
               
                 if (data.acknowledged === true) {
                     field.reset()
-                    window.alert("success")
+                    reviewSuccess()
                     setRefresh(() => !refresh)
                 }
             })

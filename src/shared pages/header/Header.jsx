@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaBars } from "react-icons/fa";
 import { HiOutlineX } from "react-icons/hi";
@@ -27,12 +27,15 @@ const Header = () => {
                     </div>
                 </div>
                 <div>
-                    <ul className={`flex lg:flex-row md:flex-row  flex-col text-white  justify-center lg:gap-8 md:gap-6 gap-8 text-center w-full bg-sm-device   lg:text-xl text-2xl py-5 rounded-b-xl duration-500 z-[999] font-primary md:static absolute ${open ? "top-20 left-0 bg-banner" : "top-[-1000px] left-0"} `}>
+                    <ul className={`flex lg:flex-row md:flex-row  flex-col text-white  justify-center lg:gap-8 md:gap-6 gap-8 text-center w-full bg-sm-device   lg:text-xl text-xl py-5 rounded-b-xl duration-700 z-[999] font-primary md:static absolute ${open ? "top-20 left-0 " : "top-[-1000px] left-0"} `}>
                         <li>
                             <Link onClick={()=>setOpen(!open)} to="/">Home</Link>
                         </li>
                         <li>
                             <Link onClick={()=>setOpen(!open)} to="/services">Services</Link>
+                        </li>
+                        <li>
+                            <Link onClick={()=>setOpen(!open)} to="/blogs">Blogs</Link>
                         </li>
                         <li>
                             <Link onClick={()=>setOpen(!open)} to="/myReviews">My Reviews</Link>
@@ -61,7 +64,7 @@ const Header = () => {
                                     Logout
                                 </li>
                                 <li className='cursor-pointer w-8 h-8 mx-auto'>
-                                    <img className='rounded-full' src={user.photoURL} alt="" />
+                                    <img className='rounded-full' src={user.photoURL? user.photoURL : ""} alt="" />
                                 </li>
                             </>
                         }

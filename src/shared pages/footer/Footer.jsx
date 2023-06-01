@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
@@ -6,7 +5,7 @@ const Footer = () => {
         <div className=' bg-footer'>
             <div className='container'>
 <div >
-<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center gap-4 p-10 lg:text-start text-center text-white">
+<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center gap-4 p-10  text-white">
   <div className='flex flex-col gap-4'>
    <h1> <span className="footer-title">Services</span> </h1>
     <p><Link to="/services" className="link link-hover">Hire Teacher</Link> </p>

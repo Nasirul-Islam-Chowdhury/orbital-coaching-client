@@ -8,6 +8,7 @@ import Signin from "../../pages/signin/Signin";
 import AddService from "../../pages/addService/AddService";
 import MyReviews from "../../pages/myReviews/MyReviews";
 import PrivateRoute from "../privateRoute/PrivateRoute";
+import Blogs from "../../pages/blogs/Blogs";
 
 export const router = createBrowserRouter([
     {
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
             {
                 path: '/signup',
                 element: <Signup/>
+            },
+            {
+                path: '/blogs',
+                element: <Blogs/>
             },
             {
                 path: '/signin',

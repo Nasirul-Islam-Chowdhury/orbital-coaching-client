@@ -1,5 +1,3 @@
-import React from 'react';
-
 const HomeCarousel = () => {
     return (
         <div className=' bg-white py-40'>

@@ -1,4 +1,3 @@
-import React from 'react';
 import Lottie from "lottie-react";
 import animation from '../../../teacher.json'
 import { Link } from 'react-router-dom';
@@ -7,8 +6,8 @@ const Banner = () => {
     return (
         <div className=' lg:h-[calc(100vh-5rem)] h-screen lg:flex justify-center items-center p-3'>
 
-            <div className='container lg:flex justify-between items-center text-white'>
-                <div className='lg:w-3/6  text-white h-full '>
+            <div className='container lg:flex md:flex justify-between items-center text-white'>
+                <div className='lg:w-3/6  md:w-3/6 text-white h-full '>
                     <div className='flex justify-start lg:gap-10 md:gap-6 gap-3 font-primary uppercase text-sm font-extralight mb-4'>
                         <h1 className='px-3 font-primary rounded-md bg-white text-black  '>50% off</h1>
                         <p>Learn From Today</p>
@@ -42,8 +41,8 @@ const Banner = () => {
                     </div>
                 </div>
 
-                <div className='lg:w-3/6'>
-                    <div className=' lg:w-full w-2/3 lg:h-full h-1/2'>
+                <div className='lg:w-3/6 md:w-3/6'>
+                    <div className=' lg:w-full md:w-full md:h-full mx-auto lg:h-full w-5/6 h-1/2'>
                         <Lottie animationData={animation} loop={true} />
                     </div>
                 </div>

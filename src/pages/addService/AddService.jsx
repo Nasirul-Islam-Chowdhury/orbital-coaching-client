@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import handleTitle from '../../../useTitle';
+import { toast } from 'react-hot-toast';
 
 const AddService = () => {
+const successToast = ()=>{
+    toast.success("Your service added successfully")
+}
     handleTitle("Add Service")
     const [error, setError] = useState("")
     const handleSubmit = (e) => {
@@ -9,7 +13,7 @@ const AddService = () => {
         const form = e.target;
         const name = form.name.value
         const price = form.price.value
-        const img = form.photourl.value
+        const img = form.photourl?.value
         const email = form.email.value
         const subject = form.subject.value
         const rating = form.rating.value
@@ -36,7 +40,7 @@ const AddService = () => {
               
             if(data.acknowledged){
                 form.reset()
-                alert("success")
+                successToast()
             }
             })
     }
@@ -46,7 +50,6 @@ const AddService = () => {
 
                 <div className=" min-w-full p-10 py-10 mt-6 overflow-hidden bg-white shadow-md sm:max-w-lg sm:rounded-lg">
                     <form onSubmit={handleSubmit}>
-
                         <div className='my-4'>
                             <div >
                                 <h3 className="text-4xl text-center uppercase font-primary font-bold "> Orbital</h3>

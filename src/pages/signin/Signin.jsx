@@ -1,13 +1,20 @@
-import React, { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { context } from '../../components/AuthProvider/Authcontexts';
+import { toast } from 'react-hot-toast';
 
 const Signin = () => {
     const [error, setError] = useState(" ");
-
     const location = useLocation()
     const from = location.state?.from?.pathname || "/";
     const navigate = useNavigate()
+    const succesToast = ()=>{
+        toast.success("You are signed in successfullly")
+    }
+    const errorToast = ()=>{
+        toast.error(error)
+    }
+
     const { emailSignin, googleSignin } = useContext(context);
     const handleSignin = (e) => {
         e.preventDefault()
@@ -16,11 +23,13 @@ const Signin = () => {
         const email = form.email.value;
         emailSignin(email, password)
             .then(res => {console.log(res)
+                succesToast();
                 navigate(from, {replace: true})
             })
             .catch(e => {
                 console.log(e);
                 setError(e.message)
+                errorToast()
             })
 
     }
@@ -81,7 +90,7 @@ const Signin = () => {
                         </div>
                     </form>
                     <div className="mt-4 text-grey-600">
-                        Don't have an account?{" "}
+                        Do not have an account?{" "}
                         <span>
                             <Link to="/signup" className=" hover:underline" href="#">
                                 Sign up
