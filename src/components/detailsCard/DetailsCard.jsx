@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { MdLocationPin } from 'react-icons/md';
-import { FaUserGraduate, FaUser, FaChevronRight } from 'react-icons/fa';
+import { FaUserGraduate, FaUser } from 'react-icons/fa';
 import Rating from '../../components/Rating/Rating';
 import { context } from '../../components/AuthProvider/Authcontexts';
 import { FiArrowRight } from "react-icons/fi";
@@ -66,7 +66,7 @@ const DetailsCard = ({ d }) => {
                 <figure>
                 <PhotoProvider>
       <PhotoView src={d.img}>
-      <img className='h-80 object-center lg:w-1/3 w-full rounded-xl mx-auto cursor-pointer' src={d.img} alt="teacher" />
+      <img className='h-96 object-center lg:w-2/3 w-full rounded-xl mx-auto cursor-pointer object-cover' src={d.img} alt="teacher" />
       </PhotoView>
     </PhotoProvider>
                  

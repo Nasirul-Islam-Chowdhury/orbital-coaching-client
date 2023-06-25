@@ -37,9 +37,11 @@ const Header = () => {
                         <li>
                             <Link onClick={()=>setOpen(!open)} to="/blogs">Blogs</Link>
                         </li>
+                        {user &&
                         <li>
                             <Link onClick={()=>setOpen(!open)} to="/myReviews">My Reviews</Link>
                         </li>
+                            }
 
                         <li>
                             <Link onClick={()=>setOpen(!open)} to="/addService">Add Service</Link>
