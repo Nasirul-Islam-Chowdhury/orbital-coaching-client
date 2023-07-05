@@ -3,7 +3,7 @@ import  { useState } from 'react';
 const ReviewRow = ({ r, review,setReview,setRefresh}) => {
     const [reviewText, setTextReview] = useState(r.reviewText)
     const handleReviewDelete = (_id) => {
-        fetch(`https://orbital-coaching-server-production.up.railway.app/review/${_id}`, {
+        fetch(`https://orbital-coaching-server-nicchy123.vercel.app/review/${_id}`, {
             method: "DELETE"
         })
             .then(res => res.json())

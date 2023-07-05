@@ -9,7 +9,7 @@ const MyReviews = () => {
     const [review, setReview] = useState([]);
     handleTitle("My Reviews");
     useEffect(() => {
-        fetch(`https://orbital-coaching-server-production.up.railway.app/myreviews?name=${user?.displayName}`)
+        fetch(`https://orbital-coaching-server-nicchy123.vercel.app/myreviews?name=${user?.displayName}`)
             .then(res => res.json())
             .then(data => {
                 setReview(data)

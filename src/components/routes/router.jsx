@@ -46,7 +46,7 @@ export const router = createBrowserRouter([
             {
                 path: '/serviceDetails/:id',
                 element: <ServiceDetails/>,
-                loader: ({params})=> fetch(`https://orbital-coaching-server-production.up.railway.app/serviceDetails/${params.id}`)
+                loader: ({params})=> fetch(`https://orbital-coaching-server-nicchy123.vercel.app/serviceDetails/${params.id}`)
             }
         ]
 

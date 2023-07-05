@@ -15,7 +15,7 @@ const DetailsCard = ({ d }) => {
     const [msg, setmsg] = useState(" ")
     const [review, setReview] = useState([]);
     useEffect(() => {
-        fetch(`https://orbital-coaching-server-production.up.railway.app/reviews/${d.name}`)
+        fetch(`https://orbital-coaching-server-nicchy123.vercel.app/reviews/${d.name}`)
             .then(res => res.json())
             .then(data => {
 
@@ -42,7 +42,7 @@ const DetailsCard = ({ d }) => {
             return setmsg(preMsg)
         }
         setmsg(" ")
-        fetch(`https://orbital-coaching-server-production.up.railway.app/reviews`, {
+        fetch(`https://orbital-coaching-server-nicchy123.vercel.app/reviews`, {
             method: "POST",
             headers: {
                 "content-type": "application/json"
